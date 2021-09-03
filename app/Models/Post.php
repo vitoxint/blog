@@ -11,5 +11,7 @@ class Post extends Model
     // Traits
     use HasFactory;
 
-    public $fillable = ['title', 'resumen' , 'body'];
+    //public $fillable = ['title', 'resumen' , 'body'];
+
+    public $guarded = ['id'];
 }
