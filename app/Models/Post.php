@@ -14,4 +14,8 @@ class Post extends Model
     //public $fillable = ['title', 'resumen' , 'body'];
 
     protected $guarded = ['id'];
+
+    public function  getRouteKeyName(){
+        return 'slug';
+    }
 }
