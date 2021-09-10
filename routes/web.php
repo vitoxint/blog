@@ -33,8 +33,8 @@ Route::get('/post/{post}', function( Post $post){
     ]);
 });
 
-Route::get('/categories/{category}', function( Category $category){
-    return 'categorias';
+Route::get('/category/{category}', function( Category $category){
+    //return 'categorias';
     return view ('posts', [
         'posts'=> $category->posts,
     ]);
