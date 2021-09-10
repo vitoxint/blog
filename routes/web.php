@@ -1,9 +1,10 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Category;
+//use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
-use Illuminate\Support\Facades\File;
+//use Spatie\YamlFrontMatter\YamlFrontMatter;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,15 @@ Route::get('/post/{post}', function( Post $post){
         'post'=> $post,
     ]);
 });
+
+Route::get('/categories/{category}', function( Category $category){
+    return 'categorias';
+   /*  return view ('post', [
+        'post'=> $post,
+    ]); */
+});
+
+
      
 
 
