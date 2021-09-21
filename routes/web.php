@@ -25,7 +25,9 @@ Route::get('/', function () {
 
     
     return view('posts', [
-      'posts' => Post::with('category')->get()
+      'posts' => Post::latest('published_at')
+      ->with('category')
+      ->get()
      ]);
 
 /*    $posts = Post::all();
