@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         Post::truncate();
 
 
-        Post::factory()->create();
+        Post::factory(5)->create();
 
         
 
