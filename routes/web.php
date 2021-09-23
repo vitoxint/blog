@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\Post;
-use App\Models\Category;
+use App\Models\User;
 //use Illuminate\Support\Facades\File;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 //use Spatie\YamlFrontMatter\YamlFrontMatter;
 /*
@@ -45,18 +46,19 @@ Route::get('/post/{post}', function( Post $post){
 });
 
 Route::get('/category/{category:slug}', function( Category $category){
-    //return 'categorias';
+    
     return view ('posts', [
         'posts'=> $category->posts,
     ]);
 });
 
-/* Route::get('/author/{author}', function( Category $category){
-    //return 'categorias';
+Route::get('/author/{author}', function( User $author){
+    
     return view ('posts', [
-        'posts'=> $category->posts,
+        //eager loading  , por defecto es lazy loading
+        'posts'=> $author->posts->load(['category' , 'author']),
     ]);
-}); */
+});
 
 
      
