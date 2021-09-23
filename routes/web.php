@@ -52,7 +52,7 @@ Route::get('/category/{category:slug}', function( Category $category){
     ]);
 });
 
-Route::get('/author/{author}', function( User $author){
+Route::get('/author/{author:id}', function( User $author){
     
     return view ('posts', [
         //eager loading  , por defecto es lazy loading
