@@ -68,6 +68,8 @@
 
 @section('content')
 
+<div class="lg:grid lg:grid-cols-3">
+
     @if (count($posts) > 0)
         @foreach ($posts as $post)
             <article>
@@ -88,4 +90,7 @@
     @else
         I don't have any posts!
     @endif 
+
+</div>
+
 @endsection
