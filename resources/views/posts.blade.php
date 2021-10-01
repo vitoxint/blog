@@ -1,3 +1,4 @@
+@props(['post'])
 <x-layout >
 @include('_posts-header')
 
