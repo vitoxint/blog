@@ -22,7 +22,7 @@
                     </h1>
 
                     <span class="mt-2 block text-gray-400 text-xs">
-                            Published <time>{{$post->created_at->diffForHumans}}</time>
+                            Published <time>{{$post->created_at->diffForHumans()}}</time>
                         </span>
                 </div>
             </header>
@@ -32,9 +32,6 @@
                     {{ $post->resumen }}
                 </p>
 
-                <p class="mt-4">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
             </div>
 
             <footer class="flex justify-between items-center mt-8">
@@ -47,7 +44,7 @@
                 </div>
 
                 <div class="hidden lg:block">
-                    <a href="/post/<?= $post->slug?>"
+                    <a href="/post/{{$post->slug}}"
                         class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
                     >Read More</a>
                 </div>
