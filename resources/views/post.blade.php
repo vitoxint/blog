@@ -41,7 +41,7 @@
                                 style="font-size: 10px">
                                 {{ $post->category->name}}
                             </a> -->
-                            <category-button :post="$post" />
+                            <x-category-button :post="$post" />
                         </div>
                     </div>
 
