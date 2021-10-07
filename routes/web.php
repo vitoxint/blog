@@ -29,7 +29,10 @@ Route::get('/', function () {
       'posts' => Post::latest('published_at')
       ->with(['category', 'author'])
       ->get()
+      //'post' => collect([])
      ]);
+
+
 
 /*    $posts = Post::all();
    return view('posts', [
