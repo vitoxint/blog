@@ -14,7 +14,7 @@
                         style="font-size: 10px">
                         {{ $post->category->name}}
                     </a> -->
-                    <x-category-button :post="$post" />
+                    <x-category-button :category="$post->category" />
 
                 </div>
 
