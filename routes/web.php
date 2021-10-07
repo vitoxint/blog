@@ -28,7 +28,8 @@ Route::get('/', function () {
     return view('posts', [
       'posts' => Post::latest('published_at')
       ->with(['category', 'author'])
-      ->get()
+      ->get() ,
+       'categories' => Category::all()
       //'post' => collect([])
      ]);
 
@@ -44,7 +45,7 @@ Route::get('/', function () {
 //Route::get('/post/{post:slug}', function( Post $post){
 Route::get('/post/{post}', function( Post $post){
     return view ('post', [
-        'post'=> $post,
+        'post'=> $post
     ]);
 });
 
