@@ -31,7 +31,7 @@ Route::get('/', function () {
       ->get() ,
        'categories' => Category::all()
       //'post' => collect([])
-     ]);
+     ])->name('home');
 
 
 
