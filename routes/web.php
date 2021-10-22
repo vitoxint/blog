@@ -31,7 +31,7 @@ Route::get('/', function () {
       ->get() ,
        'categories' => Category::all()
       //'post' => collect([])
-     ])->name('home');
+     ]);
 
 
 
@@ -39,7 +39,7 @@ Route::get('/', function () {
    return view('posts', [
      'posts' => $posts
     ]); */
-});
+})->name('home');
 
 
 //Route::get('/post/{post:slug}', function( Post $post){
