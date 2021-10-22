@@ -35,7 +35,7 @@
                 </x-dropdown-item>
 
                 @foreach( $categories as $category)
-                    <x-dropdown-item :href="/category/{{$category->slug}}" :actived="isset( $currentCategory) && $currentCategory->is($category)">
+                    <x-dropdown-item :href="/category/{{$category->slug}}" :actived="(isset( $currentCategory ) && $currentCategory->is($category)) ? true : false">
                         {{ ucwords($category->name) }}
                     </x-dropdown-item>
                 @endforeach
