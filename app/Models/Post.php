@@ -14,9 +14,17 @@ class Post extends Model
     //public $fillable = ['title', 'resumen' , 'body'];
 
     protected $guarded = ['id'];
+    public $with = ['category', 'author'];
 
     public function  getRouteKeyName(){
         return 'slug';
+    }
+
+    public function scopeFilter( $query , array $filters ){
+        if( isset($filters['search'] ) ){
+    
+            $query->where('title' , 'like' ,'%' .request('search') . '%')->orWhere( 'resumen' , 'like' ,'%' .request('search') . '%');
+        }
     }
 
     //hasOne , hasMany , belongsTo , belongsToMany

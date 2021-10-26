@@ -11,17 +11,10 @@ class PostController extends Controller
     //
     public function index(){
 
-        $posts = Post::latest('published_at')
-        ->with(['category', 'author']);
-    
-        if( request('search')){
-    
-            $posts->where('title' , 'like' ,'%' .request('search') . '%');
-            $posts->orWhere( 'resumen' , 'like' ,'%' .request('search') . '%');
-        }
+        
         
         return view('posts', [
-          'posts' => $posts->get() ,
+          'posts' => Post::latest('published_at')->filter( request(['search']))->get() ,
            'categories' => Category::all()
          ]);
 
