@@ -5,6 +5,7 @@ use App\Models\User;
 //use Illuminate\Support\Facades\File;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 //use Spatie\YamlFrontMatter\YamlFrontMatter;
 /*
 |--------------------------------------------------------------------------

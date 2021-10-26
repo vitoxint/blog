@@ -26,4 +26,15 @@ class PostController extends Controller
          ]);
 
     }
+
+
+    public function show($post){
+
+        return view ('post', [
+            'post'=> $post ,
+            'categories' => Category::all()
+        ]);
+
+
+    }
 }
