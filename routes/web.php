@@ -24,11 +24,20 @@ Route::get('/', function () {
         logger($query->sql , $query->bindings);
     });
 
+    //dd( request(['search']));// array
+    //request('search');//valor
+
+    $posts = Post::latest('published_at')
+    ->with(['category', 'author']);
+
+    if( request('search')){
+
+        $posts->where('title' , 'like' ,'%' .request('search') . '%');
+
+    }
     
     return view('posts', [
-      'posts' => Post::latest('published_at')
-      ->with(['category', 'author'])
-      ->get() ,
+      'posts' => $posts->get() ,
        'categories' => Category::all()
       //'post' => collect([])
      ]);
