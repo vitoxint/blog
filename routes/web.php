@@ -33,6 +33,7 @@ Route::get('/', function () {
     if( request('search')){
 
         $posts->where('title' , 'like' ,'%' .request('search') . '%');
+        $posts->orWhere( 'resumen' , 'like' ,'%' .request('search') . '%');
 
     }
     
