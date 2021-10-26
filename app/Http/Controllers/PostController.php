@@ -21,7 +21,7 @@ class PostController extends Controller
     }
 
 
-    public function show($post){
+    public function show( Post $post){
 
         return view ('post', [
             'post'=> $post ,
