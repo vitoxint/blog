@@ -36,7 +36,11 @@ Route::get('/post/{post}', function( Post $post){
     ]);
 }); */
 
+
+
 Route::get('/' , [ PostController::class , 'index' ])->name('home');
+
+Route::get('/post/{post}' , [ PostController::class , 'show']);
 
 Route::get('/category/{category:slug}', function( Category $category){
     
