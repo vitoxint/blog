@@ -18,37 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
+/* Route::get('/', function () {
    //$posts = cache()->rememberForever('posts.all',fn () =>Post::all());
     \Illuminate\Support\Facades\DB::listen(function( $query){
         logger($query->sql , $query->bindings);
     });
 
-    //dd( request(['search']));// array
-    //request('search');//valor
-
-    $posts = Post::latest('published_at')
-    ->with(['category', 'author']);
-
-    if( request('search')){
-
-        $posts->where('title' , 'like' ,'%' .request('search') . '%');
-        $posts->orWhere( 'resumen' , 'like' ,'%' .request('search') . '%');
-
-    }
-    
-    return view('posts', [
-      'posts' => $posts->get() ,
-       'categories' => Category::all()
-      //'post' => collect([])
-     ]);
-
-
-
-/*    $posts = Post::all();
-   return view('posts', [
-     'posts' => $posts
-    ]); */
 })->name('home');
 
 
@@ -58,7 +33,9 @@ Route::get('/post/{post}', function( Post $post){
         'post'=> $post ,
         'categories' => Category::all()
     ]);
-});
+}); */
+
+Route::get('/' , [ PostController::class , 'index' ])->name('home');
 
 Route::get('/category/{category:slug}', function( Category $category){
     
