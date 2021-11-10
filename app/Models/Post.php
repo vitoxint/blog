@@ -23,12 +23,12 @@ class Post extends Model
     public function scopeFilter( $query , array $filters ){
 
         //usando la forma when 
-        return $query->when(
+        /* return $query->when(
             $filters['search'] ?? false, //corregido
             //isset($filters['search']), //esto no va!!
             fn ($query, $search) =>
             $query->where('title', 'like', "%$search%")
-                    ->orWhere('resumen', 'like', "%$search%"));
+                    ->orWhere('resumen', 'like', "%$search%")); */
 
         // return $query->when(
         //     $filters['category'] ?? false, //corregido
