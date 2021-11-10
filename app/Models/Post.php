@@ -22,37 +22,41 @@ class Post extends Model
 
     public function scopeFilter( $query , array $filters ){
 
-        //$query->when( isset($filters['search']) , fn($query , $search) => $query->where('title' , 'like' ,'%' .$search . '%')->orWhere( 'resumen' , 'like' ,'%' . $search . '%') );
-        $query->when(
-            $filters['search'] ?? false ,
-            fn ( $query , $search ) => 
-            $query->where('title' , 'like' ,"%$search%")
-            ->orWhere( 'resumen' , 'like' ,"%$search%")
-        );
+        //usando la forma when 
+        return $query->when(
+            $filters['search'] ?? false, //corregido
+            //isset($filters['search']), //esto no va!!
+            fn ($query, $search) =>
+            $query->where('title', 'like', "%$search%")
+                    ->orWhere('resumen', 'like', "%$search%"));
 
-
-        /* return $query->when(
-            $filters['category'] ?? false ,
-            fn ( $query , $search ) => 
-            $query->whereExists( function ( $query ){
-                $query->from('categories')
-                ->whereColumn('categories.id', 'posts.category_id')
-                ->where('categories.slug' , $category );
-            }  
-        ); */
-
-        /* if( isset($filters['search'] ) ){
-    
-            $query->where('title' , 'like' ,'%' .request('search') . '%')
-            ->orWhere( 'resumen' , 'like' ,'%' .request('search') . '%');
-        } */
+        // return $query->when(
+        //     $filters['category'] ?? false, //corregido
+        //     fn ($query, $category) =>
+        //         $query
+        //             ->whereExists(function($query) {
+        //             $query
+        //                 ->from('categories')
+        //                 ->whereColumn('categories.id', 'posts.category_id')
+        //         })      ->where('categories.slug', $category)
+        // );
 
         return $query->when(
-            $filters['category'] ?? false ,
-            fn( $query , $category )=>
-            $query->whereHas('category' , fn($query) => 
-            $query->where('slug' , $category ))
+            $filters['category'] ?? false,
+            fn ($query, $category) =>
+            $query ->WhereHas('category', fn($query) =>
+            $query ->Where('slug', $category))
         );
+
+        return $query;
+
+    //    if (request('search')) {
+    //     if (isset($filters['search'])) {       
+    //         //agregar las condiciones de busqueda
+    //         return $query->where('title', 'like', '%' . $filters['search'] . '%')
+    //                 ->orWhere('resumen', 'like', '%' . $filters['search'] . '%');
+    //     }
+    //     }
 
         
     }
