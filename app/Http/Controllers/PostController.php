@@ -10,11 +10,9 @@ class PostController extends Controller
 {
     //
     public function index(){
-
-        
-        
+   
         return view('posts', [
-          'posts' => Post::latest('published_at')->filter( request(['search', 'category']))->get() ,
+          'posts' => Post::latest('published_at')->filter( request(['search', 'category']))->paginate(6) ,
            'categories' => Category::all(),
            'currentCategory' => request('category') !== null ?  Category::where('slug', request('category'))->first() : null
          ]);
